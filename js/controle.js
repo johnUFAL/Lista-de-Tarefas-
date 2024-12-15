@@ -3,6 +3,11 @@ let input  = document.getElementById('inputTarefa');
 let btnAdd = document.getElementById('btn-add');
 let main = document.getElementById('areaLista');
 
+function salvarLocalSotorange(){
+    const  tarefas = main.innerHTML;
+    localStorage.setItem('tarefas', tarefas);
+}
+
 function addTarefa(){
     let valorInput = input.value;
     if ((valorInput !== '') && (valorInput !== null) && (valorInput !== undefined)){
@@ -23,6 +28,7 @@ function addTarefa(){
             </div>`;
 
             main.innerHTML += novoItem;
+            salvarLocalSotorange();
             input.value = '';
             input.focus();
     }
@@ -38,6 +44,7 @@ input.addEventListener("keyup", function(event){
 function deletar(id){
     var tarefa = document.getElementById(id);
     tarefa.remove();
+    salvarLocalSotorange();
 }
 
 function concluir(id) {
@@ -58,4 +65,21 @@ function concluir(id) {
         icone.classList.add('mdi-circle-outline');
         icone.classList.remove('mdi-check-circle');
     }
+
+    salvarLocalSotorange();
 }
+
+function caregarTarefa() {
+    const tarefaSalva= localStorage.getItem('tarefas');
+    if (tarefaSalva) {
+        main.innerHTML = tarefaSalva;
+    }
+}
+
+function ajustarContador() {
+    const itens = document.querySelectorAll('.item');
+    contador = itens.length;
+}
+
+caregarTarefa();
+ajustarContador();
