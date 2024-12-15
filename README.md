@@ -67,8 +67,6 @@ Este projeto foi inspirado no curso gratuito do canal [Programação Web](https:
 
 ## **Melhorias Futuras**
 
-* Adicionar armazenamento local para salvar tarefas mesmo ao recarregar a página.
-
 * Implementar opção para editar tarefas existentes.
 
 * Tornar o design mais moderno e responsivo.
